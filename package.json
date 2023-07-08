@@ -1,8 +1,5 @@
 {
-  "author": {
-    "name": "Ari Siitonen",
-    "email": "jalopuuverstas@gmail.com"
-  },
+  "author": "Ari Siitonen <jalopuuverstas@gmail.com>",
   "dependencies": {
     "json5": "^2.2.0",
     "node-srec": "^0.1.2",
@@ -10,12 +7,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arisi/rt0s_client_mqtt.git"
+    "url": "git+https://github.com/arisi/rt0s_client_mqtt.git"
   },
   "main": "rt0s_client_mqtt.js",
   "description": "RT0S Client Mqtt",
   "license": "ISC",
-  "name": "rt0s_client_mqtt",
+  "name": "@rt0s/rt0s_client_mqtt",
   "scripts": {},
-  "version": "0.2.0"
+  "version": "0.2.0",
+  "bugs": {
+    "url": "https://github.com/arisi/rt0s_client_mqtt/issues"
+  },
+  "homepage": "https://github.com/arisi/rt0s_client_mqtt#readme",
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {}
 }
