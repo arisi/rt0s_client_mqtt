@@ -8,8 +8,13 @@
     "node-srec": "^0.1.2",
     "yargs": "^17.6.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arisi/rt0s_client_mqtt.git"
+  },
+  "main": "rt0s_client_mqtt.js",
   "description": "RT0S Client Mqtt",
-  "license": "Closed",
+  "license": "ISC",
   "name": "rt0s_client_mqtt",
   "scripts": {},
   "version": "0.2.0"
