@@ -1,0 +1,189 @@
+
+/******************************************************************************/
+/*                                                                            */
+/* RT0S Client Mqtt                                                           */
+/*                                                                            */
+/* Copyright (c) 2023, Rt0s Global Ltd                                        */
+/* All Rights Reserved                                                        */
+/*                                                                            */
+/******************************************************************************/
+
+
+{
+  config: {
+    idlen: 6,
+    seqlen: 6,
+  },
+  messages: {
+    identity: {
+      id: 0x1,
+      direction: "both",
+      config: true,
+      descr: "Device Identity",
+      payload: [
+        {
+          name: "ack",
+          size: 1,
+        },
+        {
+          name: "rseq",
+          size: 6,
+        },
+        {
+          name: "flash_start",
+          size: 32,
+        },
+        {
+          name: "flash_block_size",
+          size: 16,
+        },
+        {
+          name: "flash_blocks",
+          size: 16,
+        },
+        {
+          name: "hw_len",
+          size: 6,
+        },
+        {
+          name: "hw",
+          size: 8,
+          n: "hw_len",
+          type: "string",
+        },
+        {
+          name: "cpu_len",
+          size: 6,
+        },
+        {
+          name: "cpu",
+          size: 8,
+          n: "cpu_len",
+          type: "string",
+        },
+        {
+          name: "sw_len",
+          size: 6,
+        },
+        {
+          name: "sw",
+          size: 8,
+          n: "sw_len",
+          type: "string",
+        },
+        {
+          name: "hw_rev_len",
+          size: 6,
+        },
+        {
+          name: "hw_rev",
+          size: 8,
+          n: "hw_rev_len",
+          type: "string",
+        },
+        {
+          name: "sw_rev_len",
+          size: 6,
+        },
+        {
+          name: "sw_rev",
+          size: 8,
+          n: "sw_rev_len",
+          type: "string",
+        },
+        {
+          name: "serno_len",
+          size: 6,
+        },
+        {
+          name: "serno",
+          size: 8,
+          n: "serno_len",
+          type: "string",
+        },
+      ],
+    },
+    generic_req: {
+      id: 0x2,
+      direction: "down",
+      descr: "Generic Request",
+      payload: [
+        {
+          name: "id",
+          size: 6,
+        },
+      ],
+    },
+    reset: {
+      id: 0x5,
+      direction: "down",
+      reply: "generic_ack",
+      descr: "Reset the Device",
+      payload: [
+        {
+          name: "delay",
+          size: 32,
+        },
+        {
+          name: "data_len",
+          size: 6,
+        },
+        {
+          name: "data",
+          size: 8,
+          n: "data_len",
+        },
+      ],
+    },
+    generic_ack: {
+      id: 0x7,
+      direction: "up",
+      descr: "Ack a Reuquest",
+      payload: [
+        {
+          name: "rseq",
+          size: 6,
+        },
+        {
+          name: "ack",
+          size: 3,
+        },
+      ],
+    },
+    ping: {
+      direction: "both",
+      id: 0x12,
+      descr: "Send a Ping",
+      reply: "pong",
+      payload: [
+        {
+          name: "tick",
+          size: 32,
+        },
+        {
+          name: "target",
+          size: 2,
+        },
+      ],
+    },
+    pong: {
+      direction: "both",
+      descr: "Send a reply to a Ping",
+      id: 0x13,
+      payload: [
+        {
+          name: "rseq",
+          size: 6,
+        },
+        {
+          name: "tick",
+          size: 32,
+        },
+        {
+          name: "source",
+          size: 2,
+        },
+      ],
+    },
+  },
+}

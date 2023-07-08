@@ -1,0 +1,16 @@
+{
+  "author": {
+    "name": "Ari Siitonen",
+    "email": "jalopuuverstas@gmail.com"
+  },
+  "dependencies": {
+    "json5": "^2.2.0",
+    "node-srec": "^0.1.2",
+    "yargs": "^17.6.2"
+  },
+  "description": "RT0S Client Mqtt",
+  "license": "Closed",
+  "name": "rt0s_client_mqtt",
+  "scripts": {},
+  "version": "0.2.0"
+}
