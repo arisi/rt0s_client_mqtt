@@ -37,4 +37,4 @@ const argv = yargs
 
 mqttsn.init(argv.schema)
 var C = JSON5.parse(argv.config)
-mqttsn.configurator(C,'example.srec')
+mqttsn.configurator(C, argv.srec)
