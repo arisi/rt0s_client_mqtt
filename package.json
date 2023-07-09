@@ -15,9 +15,12 @@
   "name": "@rt0s/rt0s_client_mqtt",
   "scripts": {},
   "bin": {
-    "rt0s_configure": "./configure.js"
+    "RT0S_configure": "./rt0s_configure.js"
   },
-  "version": "0.2.2",
+  "keywords": [
+    "RT0S_configure"
+  ],
+  "version": "0.2.3",
   "bugs": {
     "url": "https://github.com/arisi/rt0s_client_mqtt/issues"
   },
