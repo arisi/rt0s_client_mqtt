@@ -11,10 +11,10 @@
 
 const fs = require("fs")
 const JSON5 = require('json5');
-const mqttsn = require("../rt0s_client_mqtt.js");
+const mqttsn = require("rt0s_client_mqtt");
 const yargs = require('yargs');
 
-console.log("configurator");
+console.log("RT0S Configurator");
 
 const argv = yargs
   .option('schema', {
