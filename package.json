@@ -1,6 +1,7 @@
 {
   "author": "Ari Siitonen <jalopuuverstas@gmail.com>",
   "dependencies": {
+    "adm-zip": "^0.5.10",
     "json5": "^2.2.0",
     "node-srec": "^0.1.2",
     "yargs": "^17.6.2"
@@ -20,13 +21,12 @@
   "keywords": [
     "RT0S_configure"
   ],
-  "version": "0.2.6",
+  "version": "0.2.7",
   "bugs": {
     "url": "https://github.com/arisi/rt0s_client_mqtt/issues"
   },
   "homepage": "https://github.com/arisi/rt0s_client_mqtt#readme",
   "directories": {
     "example": "example"
-  },
-  "devDependencies": {}
+  }
 }

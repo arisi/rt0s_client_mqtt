@@ -14,6 +14,7 @@ const JSON5 = require('json5');
 const mqttsn = require("@rt0s/rt0s_client_mqtt");
 const yargs = require('yargs');
 const path = require("path")
+var AdmZip = require("adm-zip");
 
 console.log("RT0S Configurator");
 
@@ -68,12 +69,12 @@ const argv = yargs
 console.log("RT0S Configurator phase serialization");
 
 mqttsn.init(argv.schema)
-
+var af = uuidv4()
 //var C = JSON5.parse(argv.config)
 console.log(argv.config);
 var C = {
   ...JSON5.parse(argv.config),
-  af: uuidv4(),
+  af,
 }
 mqttsn.configurator(C, argv.srec)
 console.log("RT0S Configurator phase serialization done");
@@ -126,9 +127,13 @@ var symtab = (syms_fn) => {
 console.log("RT0S Configurator phase artefact");
 
 var config = JSON5.parse(fs.readFileSync('config.json5').toString())
-var p = path.join(argv.path, config.af)
-console.log( config.af, p);
-fs.mkdirSync(p)
+var p = path.join(argv.path, af)
+console.log(af, p);
+try {
+  fs.mkdirSync(p)
+} catch (error) {
+
+}
 var conf = {}
 for (var f of ['schema', 'hw', 'fw_srec', 'srec']) {
   var fn = path.basename(argv[f])
@@ -144,3 +149,7 @@ fs.writeFileSync(path.join(p, 'syms.json5'), JSON5.stringify(syms, null, 2))
 fs.writeFileSync(path.join(p, 'manifest.json5'), JSON5.stringify(conf, null, 2))
 fs.writeFileSync(path.join(p, 'config.json5'), JSON5.stringify(C, null, 2))
 
+var zip = new AdmZip();
+zip.addLocalFolder(p)
+var afn = path.join(argv.path, `${af}.zip`)
+zip.writeZip(afn);
