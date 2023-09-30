@@ -126,7 +126,6 @@ var symtab = (syms_fn) => {
 
 console.log("RT0S Configurator phase artefact");
 
-var config = JSON5.parse(fs.readFileSync('config.json5').toString())
 var p = path.join(argv.path, af)
 console.log(af, p);
 try {
@@ -134,6 +133,13 @@ try {
 } catch (error) {
 
 }
+var inc_p = path.join(argv.path, af, 'inc')
+try {
+  fs.mkdirSync(inc_p)
+} catch (error) {
+
+}
+
 var conf = {}
 for (var f of ['schema', 'hw', 'fw_srec', 'srec']) {
   var fn = path.basename(argv[f])
@@ -148,6 +154,10 @@ fs.writeFileSync(path.join(p, 'stub.S'), stub)
 fs.writeFileSync(path.join(p, 'syms.json5'), JSON5.stringify(syms, null, 2))
 fs.writeFileSync(path.join(p, 'manifest.json5'), JSON5.stringify(conf, null, 2))
 fs.writeFileSync(path.join(p, 'config.json5'), JSON5.stringify(C, null, 2))
+
+for (var inc of fs.readdirSync('./inc')) {
+  fs.copyFileSync(path.join('./inc', inc), path.join(inc_p, inc))
+}
 
 var zip = new AdmZip();
 zip.addLocalFolder(p)
