@@ -21,7 +21,7 @@
   "keywords": [
     "RT0S_configure"
   ],
-  "version": "0.2.8",
+  "version": "0.2.9",
   "bugs": {
     "url": "https://github.com/arisi/rt0s_client_mqtt/issues"
   },
