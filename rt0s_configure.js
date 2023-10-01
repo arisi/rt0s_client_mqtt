@@ -152,6 +152,7 @@ console.log("RT0S Configurator phase artefact done");
 var [stub, syms] = symtab(argv.syms)
 fs.writeFileSync(path.join(p, 'stub.S'), stub)
 fs.writeFileSync(path.join(p, 'syms.json5'), JSON5.stringify(syms, null, 2))
+fs.writeFileSync((argv.syms.replace('.syms','_syms'))+'.json5', JSON5.stringify(syms, null, 2))
 fs.writeFileSync(path.join(p, 'manifest.json5'), JSON5.stringify(conf, null, 2))
 fs.writeFileSync(path.join(p, 'config.json5'), JSON5.stringify(C, null, 2))
 
